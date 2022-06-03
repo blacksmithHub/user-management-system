@@ -3,6 +3,11 @@
 namespace App\Repositories\Support\Traits;
 
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\{
+    RefreshTokenRepository,
+    TokenRepository
+};
 
 trait Authenticate
 {
@@ -38,6 +43,81 @@ trait Authenticate
         $response = app()->handle($request);
 
         return $this->handle($response);
+    }
+
+    /**
+     * Logout the user
+     *
+     * @param String $id
+     * @return mixed
+     */
+    public function logout(String $id)
+    {
+        $tokenRepository = app(TokenRepository::class);
+        $refreshTokenRepository = app(RefreshTokenRepository::class);
+
+        $tokenRepository->revokeAccessToken($id);
+        $refreshTokenRepository->revokeRefreshTokensByAccessTokenId($id);
+
+        return response()->json(true);
+    }
+
+    /**
+     * Refresh the user token
+     *
+     * @param String $token
+     * @return mixed
+     */
+    public function getTokenViaRefreshToken($token)
+    {
+        $url = sprintf('%s', $this->endpoint);
+
+        $params = [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $token,
+            'client_id' => config('services.auth.client_id'),
+            'client_secret' => config('services.auth.client_secret'),
+            'scope' => '*'
+        ];
+
+        $request = request()->create($url, 'POST', $params);
+        $response = app()->handle($request);
+
+        return $this->handle($response);
+    }
+
+    /**
+     * Attempt to authorize user
+     * 
+     * @param String $login
+     * @param String $password
+     * @return bool
+     */
+    public function isValidCredential(String $login, String $password)
+    {
+        $params = [];
+
+        if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
+            $params['email'] = $login;
+        } else {
+            $params['username'] = $login;
+        }
+
+        $params['password'] = $password;
+
+        $attempt = Auth::attempt($params);
+
+        return $attempt;
+    }
+
+    /**
+     * Get authenticated user
+     * 
+     * @return mixed
+     */
+    public function getAuth()
+    {
+        return $this->model->find(Auth::id());
     }
 
     /**

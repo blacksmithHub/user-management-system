@@ -13,4 +13,36 @@ interface UserRepositoryInterface
      * @return object
      */
     public function getToken(String $login, String $password);
+
+    /**
+     * Logout the user
+     *
+     * @param String $id
+     * @return mixed
+     */
+    public function logout(String $id);
+
+    /**
+     * Refresh the user token
+     *
+     * @param String $token
+     * @return mixed
+     */
+    public function getTokenViaRefreshToken(String $token);
+
+    /**
+     * Attempt to authorize user
+     * 
+     * @param String $login
+     * @param String $password
+     * @return bool
+     */
+    public function isValidCredential(String $login, String $password);
+
+    /**
+     * Get authenticated user
+     * 
+     * @return mixed
+     */
+    public function getAuth();
 }
