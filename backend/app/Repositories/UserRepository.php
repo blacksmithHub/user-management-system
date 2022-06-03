@@ -19,4 +19,15 @@ class UserRepository extends Repository implements UserRepositoryInterface
     {
         $this->model = $model;
     }
+
+    /**
+     * Multiple delete user.
+     * 
+     * @param array $ids
+     * @return mixed
+     */
+    public function bulkDestroy(array $ids)
+    {
+        return $this->model->whereIn('id', $ids)->delete();
+    }
 }

@@ -3,12 +3,17 @@
 namespace App\Repositories\Contracts;
 
 use App\Repositories\Support\BaseContracts\{
-    CreateInterface as Create
+    CreateInterface as Create,
+    UpdateInterface as Update
 };
 
-interface ProfileRepositoryInterface extends Create
+interface ProfileRepositoryInterface extends Create, Update
 {
     /**
-     * Here you insert custom functions.
+     * Multiple delete user.
+     * 
+     * @param array $userIds
+     * @return mixed
      */
+    public function bulkDestroy(array $userIds);
 }

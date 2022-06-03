@@ -3,12 +3,18 @@
 namespace App\Services\Contracts;
 
 use App\Services\Support\BaseContracts\{
-    StoreInterface as Store
+    StoreInterface as Store,
+    UpdateInterface as Update,
+    IndexInterface as Index
 };
 
-interface UserServiceInterface extends Store
+interface UserServiceInterface extends Store, Update, Index
 {
     /**
-     * Here you insert custom functions.
+     * Remove the specified resource from storage.
+     *
+     * @param  array  $request
+     * @return mixed
      */
+    public function bulkDestroy(array $request);
 }

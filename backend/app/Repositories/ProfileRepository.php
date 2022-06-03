@@ -16,4 +16,15 @@ class ProfileRepository extends Repository implements ProfileRepositoryInterface
     {
         $this->model = $model;
     }
+
+    /**
+     * Multiple delete user.
+     * 
+     * @param array $userIds
+     * @return mixed
+     */
+    public function bulkDestroy(array $userIds)
+    {
+        return $this->model->whereIn('user_id', $userIds)->delete();
+    }
 }

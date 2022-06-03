@@ -63,4 +63,59 @@ class UserService extends Service implements UserServiceInterface
             throw $e;
         }
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param int|string $id
+     * @param array $request
+     * @return mixed
+     */
+    public function update($id, array $request)
+    {
+        DB::beginTransaction();
+
+        try {
+            $this->repository->update($id, $request);
+
+            $this->profileRepository->update($id, $request);
+
+            DB::commit();
+
+            $user = $this->repository->model()->with('profile')->find($id);
+
+            return $this->setResponseResource($user);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  array  $request
+     * @return mixed
+     */
+    public function bulkDestroy(array $request)
+    {
+        DB::beginTransaction();
+
+        try {
+            $ids = Arr::get($request, 'ids');
+
+            $this->repository->bulkDestroy($ids);
+
+            $this->profileRepository->bulkDestroy($ids);
+
+            DB::commit();
+
+            return response()->json(true);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            throw $e;
+        }
+    }
 }

@@ -25,5 +25,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('auth', [AuthController::class, 'getAuth']);
 
-    Route::apiResource('users', UserController::class)->only(['store']);
+    Route::delete('users', [UserController::class, 'destroy']);
+    Route::apiResource('users', UserController::class)->only(['index', 'store', 'update']);
 });

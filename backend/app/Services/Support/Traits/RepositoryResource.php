@@ -5,6 +5,19 @@ namespace App\Services\Support\Traits;
 trait RepositoryResource
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @param array $request
+     * @return \Illuminate\Support\LazyCollection|\Illuminate\Http\Resources\Json\ResourceCollection
+     */
+    public function index(array $request)
+    {
+        return $this->setResponseCollection(
+            $this->repository->all($request)
+        );
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param array $request

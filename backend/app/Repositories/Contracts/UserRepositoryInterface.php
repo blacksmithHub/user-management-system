@@ -3,10 +3,11 @@
 namespace App\Repositories\Contracts;
 
 use App\Repositories\Support\BaseContracts\{
-    CreateInterface as Create
+    CreateInterface as Create,
+    UpdateInterface as Update
 };
 
-interface UserRepositoryInterface extends Create
+interface UserRepositoryInterface extends Create, Update
 {
     /**
      * Request a token for the given credentials on /oauth/token passport
@@ -49,4 +50,12 @@ interface UserRepositoryInterface extends Create
      * @return mixed
      */
     public function getAuth();
+
+    /**
+     * Multiple delete user.
+     * 
+     * @param array $ids
+     * @return mixed
+     */
+    public function bulkDestroy(array $ids);
 }
