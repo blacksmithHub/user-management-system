@@ -7,7 +7,8 @@ interface CreateInterface
     /**
      * Store a newly created resource in storage.
      *
-     * @return mixed
+     * @param array $request
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function create();
+    public function create(array $request);
 }

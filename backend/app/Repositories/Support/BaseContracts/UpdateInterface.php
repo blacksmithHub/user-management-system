@@ -7,8 +7,9 @@ interface UpdateInterface
     /**
      * Update the specified resource in storage.
      *
-     * @param  $id
-     * @return mixed
+     * @param int|string $id
+     * @param array $request
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function update($id);
+    public function update($id, array $request);
 }

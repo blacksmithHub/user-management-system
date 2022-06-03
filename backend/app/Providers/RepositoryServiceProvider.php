@@ -5,9 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use App\Repositories\Contracts\{
+    ProfileRepositoryInterface,
     UserRepositoryInterface
 };
 use App\Repositories\{
+    ProfileRepository,
     UserRepository
 };
 
@@ -19,7 +21,8 @@ class RepositoryServiceProvider extends ServiceProvider
      * @var array
      */
     public $bindings = [
-        UserRepositoryInterface::class => UserRepository::class
+        UserRepositoryInterface::class => UserRepository::class,
+        ProfileRepositoryInterface::class => ProfileRepository::class
     ];
 
     /**

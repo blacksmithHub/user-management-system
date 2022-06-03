@@ -2,7 +2,11 @@
 
 namespace App\Repositories\Contracts;
 
-interface UserRepositoryInterface
+use App\Repositories\Support\BaseContracts\{
+    CreateInterface as Create
+};
+
+interface UserRepositoryInterface extends Create
 {
     /**
      * Request a token for the given credentials on /oauth/token passport

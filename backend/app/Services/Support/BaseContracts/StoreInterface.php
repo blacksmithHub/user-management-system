@@ -2,14 +2,13 @@
 
 namespace App\Services\Support\BaseContracts;
 
-interface UpdateInterface
+interface StoreInterface
 {
     /**
-     * Update the specified resource in storage.
+     * Store a newly created resource in storage.
      *
-     * @param int|string $id
      * @param array $request
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Http\Resources\Json\JsonResource
      */
-    public function update($id, array $request);
+    public function store(array $request);
 }

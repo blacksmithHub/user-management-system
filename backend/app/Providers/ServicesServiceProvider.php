@@ -5,10 +5,12 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use App\Services\{
-    AuthService
+    AuthService,
+    UserService
 };
 use App\Services\Contracts\{
-    AuthServiceInterface
+    AuthServiceInterface,
+    UserServiceInterface
 };
 
 class ServicesServiceProvider extends ServiceProvider
@@ -19,7 +21,8 @@ class ServicesServiceProvider extends ServiceProvider
      * @var array
      */
     public $bindings = [
-        AuthServiceInterface::class => AuthService::class
+        AuthServiceInterface::class => AuthService::class,
+        UserServiceInterface::class => UserService::class,
     ];
 
     /**

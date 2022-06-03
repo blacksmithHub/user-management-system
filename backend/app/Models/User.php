@@ -53,4 +53,14 @@ class User extends Authenticatable
     {
         return $this->where('email', $login)->orWhere('username', $login)->first();
     }
+
+    /**
+     * Get the Profile relationship
+     *
+     * @return App\Models\Profile
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 }

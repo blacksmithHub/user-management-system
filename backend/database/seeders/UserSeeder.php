@@ -5,7 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\User;
+use App\Models\{
+    Profile,
+    User
+};
 
 class UserSeeder extends Seeder
 {
@@ -25,6 +28,14 @@ class UserSeeder extends Seeder
             ]);
 
             User::factory(20)->create();
+
+            $users = User::all();
+
+            foreach ($users as $user) {
+                Profile::factory()->create([
+                    'user_id' => $user->id
+                ]);
+            }
 
             DB::commit();
         } catch (\Exception $e) {
