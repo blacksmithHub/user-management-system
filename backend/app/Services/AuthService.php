@@ -27,7 +27,7 @@ class AuthService extends Service implements AuthServiceInterface
      */
     public function login(array $request)
     {
-        return $this->userRepository->getToken(Arr::get($request, 'email'), Arr::get($request, 'password'));
+        return $this->userRepository->getToken(Arr::get($request, 'login'), Arr::get($request, 'password'));
     }
 
     /**
