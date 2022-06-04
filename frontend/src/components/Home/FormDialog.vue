@@ -85,7 +85,7 @@
                   dense
                   hide-details="auto"
                   :error-messages="formErrors.phone_number"
-                  label="Phone Number"
+                  label="Contact Phone Number"
                   @blur="$v.form.profile.phone_number.$touch()"
                 />
               </v-col>

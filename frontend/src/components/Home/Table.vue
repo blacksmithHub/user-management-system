@@ -61,7 +61,7 @@ export default {
           value: 'email'
         },
         {
-          text: 'Phone Number',
+          text: 'Contact Phone Number',
           value: 'profile.phone_number'
         },
         {

@@ -69,3 +69,14 @@
     ```
     npm run serve
     ```
+
+<br>
+
+## Usage
+Initial administrator account:
+<br>
+    - email: `admin@mail.test`
+<br>
+    - password: `Password123?`
+
+The password for all users created via seeder/factory is `Password123?`
