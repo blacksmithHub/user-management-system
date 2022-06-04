@@ -45,19 +45,4 @@ trait ModelResource
 
         return $model;
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int|string $id
-     * @return int
-     */
-    public function delete($id)
-    {
-        $model = $this->model->findOrFail($id);
-
-        $model->delete();
-
-        return 1;
-    }
 }

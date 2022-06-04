@@ -43,15 +43,4 @@ trait RepositoryResource
             $this->repository->update($id, $request)
         );
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int|string $id
-     * @return int
-     */
-    public function destroy($id)
-    {
-        return $this->repository->delete($id);
-    }
 }
