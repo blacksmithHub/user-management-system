@@ -1,9 +1,5 @@
 ## Instructions
-
-<br>
-
 - Setup backend:
-<br>
     1. Navigate to `backend` folder. Which contains the Laravel project.
     ```
     cd backend
@@ -39,19 +35,14 @@
     ```
     php artisan serve
     ```
-
     ### PHP Unit Tests
     ```
     php artisan test
     ```
-
     ### Laravel Telescope
     Visit the backend URL, example: `http://127.0.0.1:8000/telescope`
 
-<br>
-
 - Setup frontend:
-<br>
     1. Navigate to `frontend` folder. Which contains the Vue project.
     ```
     cd frontend
@@ -70,13 +61,9 @@
     npm run serve
     ```
 
-<br>
-
 ## Usage
 Initial administrator account:
-<br>
-    - email: `admin@mail.test`
-<br>
-    - password: `Password123?`
+- email: `admin@mail.test`
+- password: `Password123?`
 
 The password for all users created via seeder/factory is `Password123?`
