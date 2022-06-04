@@ -76,9 +76,9 @@ class UserService extends Service implements UserServiceInterface
         DB::beginTransaction();
 
         try {
-            $this->repository->update($id, $request);
+            $user = $this->repository->update($id, $request);
 
-            $this->profileRepository->update($id, $request);
+            $this->profileRepository->update($user->profile->id, $request);
 
             DB::commit();
 
