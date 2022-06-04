@@ -37,4 +37,14 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model;
     }
+
+    /**
+     * Model Relationships
+     * 
+     * @return array
+     */
+    public function relationMethods()
+    {
+        return isset($this->relationMethods) ? $this->relationMethods : [];
+    }
 }

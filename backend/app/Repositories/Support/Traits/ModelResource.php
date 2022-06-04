@@ -14,7 +14,9 @@ trait ModelResource
      */
     public function all(array $request)
     {
-        return Arr::has($request, 'page') ? $this->model->paginate(Arr::get($request, 'per_page') ?? 10) : $this->model->cursor();
+        return Arr::has($request, 'page') ?
+            $this->model->with($this->relationMethods)->paginate(Arr::get($request, 'per_page') ?? 10) :
+            $this->model->cursor();
     }
 
     /**

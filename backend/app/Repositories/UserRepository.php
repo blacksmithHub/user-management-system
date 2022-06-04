@@ -11,6 +11,15 @@ class UserRepository extends Repository implements UserRepositoryInterface
     use Authenticate;
 
     /**
+     * Model Relationships
+     * 
+     * @var array
+     */
+    protected $relationMethods = [
+        'profile'
+    ];
+
+    /**
      * Create the repository instance.
      *
      * @param \App\Models\User
